@@ -1,25 +1,21 @@
 import React from 'react'
+import Video from '../assets/video.png'
+import More from '../assets/more.png'
+import Add from '../assets/add.png'
 
-const chat = () => {
+const Chat = () => {
   return (
-    <div className='chats'>
-      <div className='userChat'>
-        <img src="https://th.bing.com/th/id/OIP.P1QJg7a9cNbKUBzdIxD14wHaLG?rs=1&pid=ImgDetMain" alt="" />
-        <div className='userChatInfo'>
-          <span>Sayna</span>
-          <p>Hello</p>
+    <div className='chat'>
+        <div className='chatInfo'>
+            <span>Sayna</span>
+            <div className='chatIcons'>
+                <img src={Video} alt="" />
+                <img src={Add} alt="" />
+                <img src={More} alt="" />
+            </div>
         </div>
-      </div>
-
-      <div className='userChat'>
-        <img src="https://th.bing.com/th/id/OIP.P1QJg7a9cNbKUBzdIxD14wHaLG?rs=1&pid=ImgDetMain" alt="" />
-        <div className='userChatInfo'>
-          <span>Sayna</span>
-          <p>Hello</p>
-        </div>
-      </div>
     </div>
   )
 }
 
-export default chat;
+export default Chat;
