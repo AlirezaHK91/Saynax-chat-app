@@ -1,5 +1,5 @@
 .formContainer {
-    background-color: #1A0014 ;
+    background-color: #5e4057 ;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -70,7 +70,7 @@
 }
 
 .home {
-    background-color: #540041 ;
+    background-color: #5e4057 ;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -120,8 +120,47 @@
                         border: none;
                         cursor: pointer;
                     }
+                }    
+            }
+
+            .search {
+                border-bottom:1px solid #665866;
+
+                .searchForm {
+                    input {
+                        background-color: transparent;
+                        border: none;
+                        color: white;
+
+                        &::placeholder{
+                            color: lightgrey;
+                        }
+                    }
+             
                 }
-                
+            }
+
+            .userChat {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white;
+                cursor: pointer;
+                &:hover {
+                    background-color: #25225f;
+                }
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .userChatInfo {
+                    span {font-size: 18px; font-weight: 500;}
+                    p{font-size: 14px; color: lightgray}
+                }
             }
         }
 
