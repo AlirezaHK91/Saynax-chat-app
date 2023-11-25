@@ -14,48 +14,46 @@ import { db } from '../firebase';
 const Register = () => {
   const [err, setErr] = useState(false);
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    const file = e.target[3].files;
-    //Test if submit handler works
-    console.log(e.target[0].value);
+    const file = e.target[3].files[0]; // Only take the first file if multiple files are selected
 
     try {
-      const response = await createUserWithEmailAndPassword(auth,email,password);
+      // Create a new user with email and password using Firebase authentication
+      const response = await createUserWithEmailAndPassword(auth, email, password);
 
+      // Set up storage reference with the user's display name
       const storageRef = ref(storage, displayName);
-      console.log("Display Name:", displayName);
 
+      // Upload user's photo to storage
       const uploadTask = uploadBytesResumable(storageRef, file);
-      console.log("Storage Ref:", storageRef);
 
-      // Register three observers:
-      uploadTask.on(
-        (error) => {
-          console.error("Upload error:", error);
-          setErr(true);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
-            console.log("Upload Task Snapshot Ref:", uploadTask.snapshot.ref);
-            await updateProfile(response.user, {
-              displayName,
-              photoURL: downloadURL, 
-            });
-            await setDoc(doc(db, "users", response.user.uid), {
-              uid: response.user.uid,
-              displayName,
-              email,
-              photoURL: downloadURL
-            });
-          });
-        }
-      );
+      // Wait for the upload to be complete
+      await uploadTask;
 
+      // Get the download URL after the upload is complete
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // Update user profile with display name and photo URL
+      await updateProfile(response.user, {
+        displayName,
+        photoURL: downloadURL,
+      });
+
+      // Save user data to Firestore
+      await setDoc(doc(db, "users", response.user.uid), {
+        uid: response.user.uid,
+        displayName,
+        email,
+        photoURL: downloadURL,
+      });
     } catch (err) {
+      // Handle and log any errors during registration
+      console.error("Error during registration:", err);
       setErr(true);
     }
   };
