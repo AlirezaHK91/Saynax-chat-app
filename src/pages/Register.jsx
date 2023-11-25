@@ -3,16 +3,14 @@ import Photo from "../assets/Photo.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage } from "../firebase";
 import { useState } from "react";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore"; 
-import { db } from '../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [err, setErr] = useState(false);
+  const navigate = useNavigate();
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -24,7 +22,13 @@ const Register = () => {
 
     try {
       // Create a new user with email and password using Firebase authentication
-      const response = await createUserWithEmailAndPassword(auth, email, password);
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      //log the user from response
+      console.log("Response : User ", response.user);
 
       // Set up storage reference with the user's display name
       const storageRef = ref(storage, displayName);
@@ -51,6 +55,9 @@ const Register = () => {
         email,
         photoURL: downloadURL,
       });
+
+      await setDoc(doc(db, "userChats", response.user.uid), {});
+      navigate("/");
     } catch (err) {
       // Handle and log any errors during registration
       console.error("Error during registration:", err);
@@ -75,7 +82,12 @@ const Register = () => {
           <button>Signup</button>
           {err && <span>Something went wrong</span>}
         </form>
-        <p>You have an account. Login</p>
+        <p>
+          You have an account.{" "}
+          <Link to="/login" style={{ color: "white" }}>
+            Login
+          </Link>{" "}
+        </p>
       </div>
     </div>
   );
