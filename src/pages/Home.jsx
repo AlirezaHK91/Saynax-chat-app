@@ -1,5 +1,5 @@
 import React from 'react'
-import Chat from '../components/Chat'
+import Chat from '../components/Chatt'
 import Sidebar from '../components/Sidebar'
 
 const Home = () => {
