@@ -3,7 +3,7 @@ import React from 'react'
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <span className='logo'>Saynax</span>
+      <span className='logo'>SaynaX</span>
       <div className='user'>
       <img src="" alt="" />
       <span>Johnny Depp</span>
