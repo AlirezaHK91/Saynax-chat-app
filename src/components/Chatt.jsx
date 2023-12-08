@@ -5,7 +5,7 @@ import Add from '../assets/add.png'
 import Messages from './Messages'
 import Input from './Input'
 import { AuthContext } from '../context/AuthContext'
-import { ChatContext } from '../context/chatContext'
+import { ChatContext } from '../context/ChatContext'
 import { useContext } from "react";
 
 const Chat = () => {

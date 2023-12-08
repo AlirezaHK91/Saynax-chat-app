@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Attach from "../assets/attach.png";
 import Image from "../assets/image.png";
 import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/chatContext";
+import { ChatContext } from "../context/ChatContext";
 import { Timestamp, arrayUnion, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
