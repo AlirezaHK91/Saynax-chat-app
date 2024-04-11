@@ -2,17 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCzpnj6LzZ1T4a8igMI1x9gQwlgsxsjiDE",
-  authDomain: "saynax-chat.firebaseapp.com",
-  projectId: "saynax-chat",
-  storageBucket: "saynax-chat.appspot.com",
-  messagingSenderId: "23686932930",
-  appId: "1:23686932930:web:818811d592d9c0cb548e5b",
+  apiKey: "AIzaSyDfW1YAgy1U7TjBday1KwvAnMT7JepXA8s",
+  authDomain: "saynax-c7b61.firebaseapp.com",
+  projectId: "saynax-c7b61",
+  storageBucket: "saynax-c7b61.appspot.com",
+  messagingSenderId: "304671109180",
+  appId: "1:304671109180:web:162a595ffdf1af5c1f9339"
 };
 
 // Initialize Firebase

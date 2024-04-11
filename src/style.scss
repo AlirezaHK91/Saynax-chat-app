@@ -118,10 +118,13 @@ $font-common: Verdana, Geneva, Tahoma, sans-serif;
 
 // Sidebar in the chat window
     .sidebar {
-      flex: 1;
+      width: 48%;
       background-color: #3e3c61;
       //bring logo to the frame after responsive
       position: relative;
+      @include tablet {
+        width: 25%;
+      }
 
       .navbar {
         display: flex;
@@ -202,6 +205,9 @@ $font-common: Verdana, Geneva, Tahoma, sans-serif;
           height: 50px;
           border-radius: 50%;
           object-fit: cover;
+          @include tablet {
+            display: none;
+          }
         }
 
         .userChatInfo {
