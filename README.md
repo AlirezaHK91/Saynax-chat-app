@@ -2,6 +2,8 @@
 
 SaynaX is a real-time chat application built using React and Firebase. This application allows users to register, log in, search for other users, and start chatting in real-time. It features user authentication, file uploads, and a clean user interface.
 
+The app is deployed and just click on the link and test the chat app: https://saynax.vercel.app/
+
 ## Features
 
 - User authentication with Firebase
